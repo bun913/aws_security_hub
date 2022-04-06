@@ -1,6 +1,10 @@
 
 provider "aws" {
-  region = "ap-northeast-1"
+  region = var.region
+  default_tags {
+    tags = var.tags
+  }
+
 }
 
 # 全リージョン操作する際のprovider設定
