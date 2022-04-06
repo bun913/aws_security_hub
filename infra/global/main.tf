@@ -11,3 +11,14 @@ terraform {
 locals {
   default_prefix = var.tags.Project
 }
+
+/*
+  CloudTrailの有効化
+*/
+
+module "cloudtrail" {
+  source = "./modules/cloudtrail/"
+
+  prefix = local.default_prefix
+  region = var.region
+}
