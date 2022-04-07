@@ -8,8 +8,11 @@ terraform {
   }
 }
 
+data "aws_caller_identity" "current" {}
+
 locals {
   default_prefix = var.tags.Project
+  account_id     = data.aws_caller_identity.current.account_id
 }
 
 /*
