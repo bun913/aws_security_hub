@@ -25,3 +25,9 @@ module "cloudtrail" {
   prefix = local.default_prefix
   region = var.region
 }
+
+module "notification" {
+  source = "./modules/notification/"
+
+  prefix = local.default_prefix
+}
