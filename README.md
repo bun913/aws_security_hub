@@ -4,14 +4,14 @@
 
 https://dev.classmethod.jp/articles/aws-security-all-in-one-2021/
 
-ただし、Configの全てのルールを全てのリージョンで有効化するものであるためコストは随時確認していく必要がある。
-
-頻繁に更新されるリソースがあり、コストが嵩む場合はルールの適用をしないことも検討する。
-
 - CloudTrail
 - GuardDuty
 - Config
 - SecurityHub
+
+ただし、Configの全てのルールを全てのリージョンで有効化するものであるためコストは随時確認していく必要がある。
+
+頻繁に更新されるリソースがあり、コストが嵩む場合はルールの適用をしないことも検討する。
 
 SecurityHubで `High` または `Critical` な状態はSlackチャンネルに投稿されるように設定する。
 
@@ -57,5 +57,17 @@ terraform apply
 
 こちらのブログ 「3.AWS Chatbotの設定」の手順どおりにChatbotを作成します。
 
-https://blog.serverworks.co.jp/tech/2020/05/22/securityhub_chatbot/
+https://blog.serverworks.co.jp/2021/12/27/210000
 
+### 確認
+
+SecurityHubで `Critical` もしくは `High` の問題が新たに検出されれば以下のようにSlackに通知が届きます。
+
+テストする場合は一時的にSecurityGroupを作成し、インバウンドルールでSSH接続をフルオープン(0.0.0.0/0)などに設定すれば検出してくれます。
+**もちろん作ったSGはテストの後に削除しましょう**
+
+![Slack通知](infra/docs/images/slack.png)
+
+すでに `Critical` または `Higt` のルールが検出されている場合は、「ワークフローのステータス」を「新規」に設定することでSlackに通知が届きます。
+
+![新規に変更](infra/docs/images/securityhub-changed.png)

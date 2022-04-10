@@ -27,7 +27,8 @@ module "cloudtrail" {
 }
 
 module "notification" {
-  source = "./modules/notification/"
+  source     = "./modules/notification/"
+  account_id = local.account_id
 
   prefix = local.default_prefix
 }
