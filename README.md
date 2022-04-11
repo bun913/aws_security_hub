@@ -9,7 +9,9 @@ https://dev.classmethod.jp/articles/aws-security-all-in-one-2021/
 - Config
 - SecurityHub
 
-ただし、Configの全てのルールを全てのリージョンで有効化するものであるためコストは随時確認していく必要がある。
+![構成図](infra/docs/images/system_archi.png)
+
+Configの全てのルールを全てのリージョンで有効化するものであるためコストは随時確認していく必要がある。
 
 頻繁に更新されるリソースがあり、コストが嵩む場合はルールの適用をしないことも検討する。
 
@@ -24,17 +26,9 @@ Slackチャンネルへの通知には `ChatBot` を利用する。
 
 ### Slackチャンネルの準備とWebHookURLの準備
 
-以下を参考にWebhookUrlを発行しておきます。
-
-https://qiita.com/vmmhypervisor/items/18c99624a84df8b31008
-
-後ほどChatBot作成時に利用するので控えておいてください。
-
-### SecurityHubの有効化(手動)
+### SecurityHubの設定(手動)
 
 ![SecurityHubの有効化](infra/docs/images/securityhub.png)
-
-自分のメインにしたいリージョンでセキュリティハブを有効化します。
 
 SecurityHubのサービスに移動して「SecurityHubに移動」を押下します
 
